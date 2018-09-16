@@ -1,0 +1,44 @@
+{
+  "name": "cra-suspense-starter",
+  "version": "1.0.0",
+  "private": true,
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "proxy": "http://localhost:8003",
+  "scripts": {
+    "api": "node --experimental-modules api-server/main.mjs",
+    "dev": "cross-env NODE_PATH=src/ PORT=7450 react-scripts start",
+    "start": "npm-run-all -p api dev",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@emotion/babel-plugin-core": "0.6.9",
+    "@emotion/core": "10.0.0-really-unsafe-please-do-not-use.2",
+    "@emotion/css": "10.0.0-really-unsafe-please-do-not-use.2",
+    "@emotion/global": "0.7.0",
+    "@emotion/jsx": "0.7.0",
+    "@emotion/keyframes": "0.9.1",
+    "@emotion/style": "0.8.0",
+    "@reach/router": "file:./local_modules/reach__router",
+    "react": "16.6.0-alpha.8af6728",
+    "react-async-elements": "^0.4.0",
+    "react-cache": "^16.6.0-alpha.8af6728",
+    "react-dom": "16.6.0-alpha.8af6728",
+    "react-scripts": "^2.0.4",
+    "scheduler": "^0.9.0"
+  },
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "cors": "^2.8.4",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.4",
+    "npm-run-all": "^4.1.3"
+  }
+}
