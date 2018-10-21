@@ -3,7 +3,9 @@ import * as React from "react";
 import { ErrorBoundary } from "../ErrorBoundary";
 import { PageError } from "./PageError";
 import type { RouterLocation } from "@reach/router";
-// import { trackView } from '~/services/ga';
+// import { trackView } from 'services/ga';
+
+const FLAG_PRODUCTION = window.FLAG_PRODUCTION;
 
 // Store scroll position when leaving a route, restore if we return back to it
 const SCROLL_RESTORATION = "scrollRestoration" in window.history;

@@ -1,8 +1,8 @@
 // @flow
-import * as React from 'react';
-import { PageBlank } from './PageBlank';
-import { PageError } from './PageError';
-import { delay } from '~/services/delay';
+import * as React from "react";
+import { PageBlank } from "./PageBlank";
+import { PageError } from "./PageError";
+import { delay } from "services/delay";
 
 type LoadingError = Error | null;
 
@@ -10,7 +10,7 @@ type Props = {};
 
 type State = {
   error: LoadingError,
-  loading: boolean,
+  loading: boolean
 };
 
 export const getAsyncRoute = (loader: ComponentImport) => {
@@ -23,7 +23,7 @@ export const getAsyncRoute = (loader: ComponentImport) => {
     mounted = false;
     state = {
       error: null,
-      loading: AsyncRoute.Route === null,
+      loading: AsyncRoute.Route === null
     };
 
     safeSetState(state: $Shape<State>) {

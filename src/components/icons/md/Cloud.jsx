@@ -1,6 +1,6 @@
 // @flow
-import * as React from 'react';
-import { Icon, type Props } from '~/components/icons/Icon';
+import * as React from "react";
+import { Icon, type Props } from "components/icons/Icon";
 
 export default function Cloud(props: Props) {
   return (

@@ -1,9 +1,9 @@
 // @flow
-import * as React from 'react';
+import * as React from "react";
 //$FlowFixMe
-import { lazy, unstable_Suspense as Suspense } from 'react';
-import { PageBlank } from './PageBlank';
-// import { delay } from '~/services/delay';
+import { lazy, unstable_Suspense as Suspense } from "react";
+import { PageBlank } from "./PageBlank";
+// import { delay } from 'services/delay';
 
 export const getSuspenseRoute = (loader: ComponentImport) => {
   const LazyRoute = lazy(loader);

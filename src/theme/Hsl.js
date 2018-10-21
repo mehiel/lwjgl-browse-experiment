@@ -1,11 +1,19 @@
 // @flow
+
+const FLAG_PRODUCTION = window.FLAG_PRODUCTION;
+
 export class Hsl {
   hue: number;
   saturation: number;
   lightness: number;
   alpha: number;
 
-  constructor(hue: number, saturation: number, lightness: number, alpha: number = 1) {
+  constructor(
+    hue: number,
+    saturation: number,
+    lightness: number,
+    alpha: number = 1
+  ) {
     if (!FLAG_PRODUCTION) {
       if (hue < 0 || hue > 360) {
         throw new Error(`Invalid hue (0-360): ${hue}`);
@@ -29,7 +37,9 @@ export class Hsl {
 
   css() {
     return this.alpha < 1.0
-      ? `hsla(${this.hue}, ${this.saturation}%, ${this.lightness}%, ${this.alpha})`
+      ? `hsla(${this.hue}, ${this.saturation}%, ${this.lightness}%, ${
+          this.alpha
+        })`
       : `hsl(${this.hue}, ${this.saturation}%, ${this.lightness}%)`;
   }
 }

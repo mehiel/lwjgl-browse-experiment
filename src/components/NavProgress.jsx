@@ -1,10 +1,14 @@
 // @flow
 // @jsx jsx
-import * as React from 'react';
-import { jsx } from '@emotion/core';
-import css from '@emotion/css';
-import keyframes from '@emotion/keyframes';
-import { COLOR_CUSTOM_CONTROL_INDICATOR_BG, COLOR_CUSTOM_CONTROL_INDICATOR_CHECKED_BG, ZINDEX_FIXED } from '~/theme';
+import * as React from "react";
+import { jsx } from "@emotion/core";
+import css from "@emotion/css";
+import keyframes from "@emotion/keyframes";
+import {
+  COLOR_CUSTOM_CONTROL_INDICATOR_BG,
+  COLOR_CUSTOM_CONTROL_INDICATOR_CHECKED_BG,
+  ZINDEX_FIXED
+} from "theme";
 
 let instance: null | NavProgress = null;
 let count = 0;
@@ -50,7 +54,7 @@ export function end() {
 }
 
 type State = {
-  progress: number,
+  progress: number
 };
 
 export class NavProgress extends React.Component<{||}, State> {
@@ -58,7 +62,7 @@ export class NavProgress extends React.Component<{||}, State> {
   trickleTimeoutId: TimeoutID | null = null;
 
   state = {
-    progress: 0,
+    progress: 0
   };
 
   componentDidMount() {
@@ -101,7 +105,10 @@ export class NavProgress extends React.Component<{||}, State> {
       }
 
       this.setState({ progress: progress });
-      this.trickleTimeoutId = setTimeout(this.trickle.bind(this), 200 + Math.floor(400 * Math.random()));
+      this.trickleTimeoutId = setTimeout(
+        this.trickle.bind(this),
+        200 + Math.floor(400 * Math.random())
+      );
     }
   }
 
@@ -126,7 +133,7 @@ export class NavProgress extends React.Component<{||}, State> {
     const { progress } = this.state;
     return progress === 0 ? null : (
       <div
-        className={progress === 100 ? 'fade-out' : ''}
+        className={progress === 100 ? "fade-out" : ""}
         css={css`
           position: fixed;
           width: 100%;
@@ -143,7 +150,7 @@ export class NavProgress extends React.Component<{||}, State> {
       >
         <div
           style={{
-            transform: `scaleX(${progress / 100})`,
+            transform: `scaleX(${progress / 100})`
           }}
           css={css`
             width: 100%;

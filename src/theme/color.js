@@ -1,7 +1,14 @@
 // @flow
-import { Hsl } from './Hsl';
+import { Hsl } from "./Hsl";
 
-export function hsl(hue: number, saturation: number, lightness: number, alpha?: number) {
+const FLAG_PRODUCTION = window.FLAG_PRODUCTION;
+
+export function hsl(
+  hue: number,
+  saturation: number,
+  lightness: number,
+  alpha?: number
+) {
   return new Hsl(hue, saturation, lightness, alpha);
 }
 
@@ -85,7 +92,8 @@ export function saturate(color: Hsl, value: number) {
   return setSaturation(color, saturation);
 }
 
-export const desaturate = (color: Hsl, value: number) => saturate(color, -value);
+export const desaturate = (color: Hsl, value: number) =>
+  saturate(color, -value);
 
 export function lighten(color: Hsl, value: number) {
   let lightness = color.lightness + value;
@@ -113,7 +121,11 @@ export function fade(color: Hsl, value: number) {
 export function mix(color: Hsl, mix: Hsl, weight: number = 0.5) {
   const mixChannels = toRGB(mix);
   return setAlpha(
-    fromRGB(toRGB(color).map((channelA, i) => Math.round(mixChannels[i] + (channelA - mixChannels[i]) * weight))),
+    fromRGB(
+      toRGB(color).map((channelA, i) =>
+        Math.round(mixChannels[i] + (channelA - mixChannels[i]) * weight)
+      )
+    ),
     mix.alpha + (mix.alpha - color.alpha) * weight
   );
 }

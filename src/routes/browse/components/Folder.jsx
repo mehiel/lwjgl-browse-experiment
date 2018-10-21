@@ -1,11 +1,11 @@
 // @flow
 // @jsx jsx
-import * as React from 'react';
-import { jsx } from '@emotion/core';
-import css from '@emotion/css';
-import { Link } from '@reach/router';
-import IconFolder from '~/components/icons/md/Folder';
-import { CircularProgress } from '~/components/CircularProgress';
+import * as React from "react";
+import { jsx } from "@emotion/core";
+import css from "@emotion/css";
+import { Link } from "@reach/router";
+import IconFolder from "components/icons/md/Folder";
+import { CircularProgress } from "components/CircularProgress";
 
 export const FolderTH = css`
   user-select: none;
@@ -28,23 +28,24 @@ export const FolderTH = css`
 
 type Props = {
   path: string,
-  loading: boolean,
+  loading: boolean
 };
 
 export class Folder extends React.PureComponent<Props> {
   static defaultProps = {
-    loading: false,
+    loading: false
   };
   render() {
     const { path, loading } = this.props;
-    const parts = path.split('/');
+    const parts = path.split("/");
     const name = parts[parts.length - 1];
 
     return (
       <tr>
         <th css={FolderTH} colSpan={2}>
           <Link to={path}>
-            <IconFolder /> {name} {loading && <CircularProgress size={16} thickness={4} />}
+            <IconFolder /> {name}{" "}
+            {loading && <CircularProgress size={16} thickness={4} />}
           </Link>
         </th>
       </tr>

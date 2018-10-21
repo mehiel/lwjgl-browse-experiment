@@ -1,11 +1,11 @@
 // @flow
 // @jsx jsx
-import * as React from 'react';
-import { jsx } from '@emotion/core';
-import { cc, COLOR_PRIMARY } from '~/theme';
-import { easeInQuad as easeIn, easeOutCubic } from '~/theme/easing';
-import css from '@emotion/css';
-import keyframes from '@emotion/keyframes';
+import * as React from "react";
+import { jsx } from "@emotion/core";
+import { cc, COLOR_PRIMARY } from "theme";
+import { easeInQuad as easeIn, easeOutCubic } from "theme/easing";
+import css from "@emotion/css";
+import keyframes from "@emotion/keyframes";
 
 const SIZE = 44;
 
@@ -24,7 +24,7 @@ type Props = {
   style?: $Shape<CSSStyleDeclaration>,
   thickness: number,
   value: number,
-  variant: 'determinate' | 'indeterminate' | 'static',
+  variant: "determinate" | "indeterminate" | "static"
 };
 
 const indeterminateAnimation = keyframes(css`
@@ -78,27 +78,42 @@ export class CircularProgress extends React.Component<Props, void> {
     size: 40,
     thickness: 3.6,
     value: 0,
-    variant: 'indeterminate',
+    variant: "indeterminate"
   };
 
   render() {
-    const { size, thickness, value, variant, className, style, ...other } = this.props;
+    const {
+      size,
+      thickness,
+      value,
+      variant,
+      className,
+      style,
+      ...other
+    } = this.props;
 
     const circleStyle = {};
     const rootStyle = {};
     const rootProps = {};
 
-    if (variant === 'determinate' || variant === 'static') {
+    if (variant === "determinate" || variant === "static") {
       const circumference = 2 * Math.PI * ((SIZE - thickness) / 2);
       circleStyle.strokeDasharray = circumference.toFixed(3);
-      rootProps['aria-valuenow'] = Math.round(value);
+      rootProps["aria-valuenow"] = Math.round(value);
 
-      if (variant === 'static') {
-        circleStyle.strokeDashoffset = `${(((100 - value) / 100) * circumference).toFixed(3)}px`;
-        rootStyle.transform = 'rotate(-90deg)';
+      if (variant === "static") {
+        circleStyle.strokeDashoffset = `${(
+          ((100 - value) / 100) *
+          circumference
+        ).toFixed(3)}px`;
+        rootStyle.transform = "rotate(-90deg)";
       } else {
-        circleStyle.strokeDashoffset = `${(easeIn((100 - value) / 100) * circumference).toFixed(3)}px`;
-        rootStyle.transform = `rotate(${(easeOut(value / 70) * 270).toFixed(3)}deg)`;
+        circleStyle.strokeDashoffset = `${(
+          easeIn((100 - value) / 100) * circumference
+        ).toFixed(3)}px`;
+        rootStyle.transform = `rotate(${(easeOut(value / 70) * 270).toFixed(
+          3
+        )}deg)`;
       }
     }
 
@@ -106,8 +121,8 @@ export class CircularProgress extends React.Component<Props, void> {
       <svg
         css={ProgressStyle}
         className={cc(className, {
-          indeterminate: variant === 'indeterminate',
-          static: variant === 'static',
+          indeterminate: variant === "indeterminate",
+          static: variant === "static"
         })}
         style={{ width: size, height: size, ...rootStyle, ...style }}
         role="progressbar"
