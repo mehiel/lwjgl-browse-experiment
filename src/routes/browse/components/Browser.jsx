@@ -83,17 +83,8 @@ export class Browser extends Component<Props, State> {
     this.mounted = false;
   }
 
-  componentDidUpdate() {
-    const { path } = this.props;
-
-    if (this.state.path !== path) {
-      unstable_scheduleCallback(() => this.setState({ path }));
-    }
-  }
-
   render() {
-    const { path: loading } = this.props;
-    const { path } = this.state;
+    const { path } = this.props;
 
     return (
       <div className="table-responsive-md mt-sm-4">
@@ -130,7 +121,7 @@ export class Browser extends Component<Props, State> {
               maxDuration={this.mounted ? 3200 : 0}
               fallback={<SpinnerRow />}
             >
-              <Contents path={path} loading={loading} />
+              <Contents path={path} />
             </Suspense>
           </tbody>
         </table>
@@ -141,24 +132,17 @@ export class Browser extends Component<Props, State> {
 
 // Browser Contents
 type ContentProps = {
-  path: string,
-  loading?: string
+  path: string
 };
 
-function Contents({ path, loading }: ContentProps) {
+function Contents({ path }: ContentProps) {
   const { folders, files } = BrowserContentsResource.read(cache, path);
   const basePath = path.length ? path + "/" : "";
   return (
     <Fragment>
       {folders.map(folder => {
         const fullPath = `${basePath}${folder}`;
-        return (
-          <Folder
-            key={fullPath}
-            path={fullPath}
-            loading={loading === fullPath}
-          />
-        );
+        return <Folder key={fullPath} path={fullPath} />;
       })}
       {files.map(file => (
         <File key={`${basePath}${file}`} path={`${basePath}${file}`} />

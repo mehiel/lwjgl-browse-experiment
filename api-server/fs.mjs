@@ -1,4 +1,4 @@
-const FIXED_DELAY = 0;
+const FIXED_DELAY = 1000;
 
 export const asyncResponse = (response, body) =>
   new Promise(resolve => {

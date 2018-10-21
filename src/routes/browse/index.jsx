@@ -15,7 +15,7 @@ const BrowseRoute = (props: RouteProps) => {
         styles={[
           {
             body: {
-              backgroundColor: "gray"
+              backgroundColor: "#eee"
             }
           }
         ]}

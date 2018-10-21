@@ -27,8 +27,7 @@ export const FolderTH = css`
 `;
 
 type Props = {
-  path: string,
-  loading: boolean
+  path: string
 };
 
 export class Folder extends React.PureComponent<Props> {
@@ -44,8 +43,13 @@ export class Folder extends React.PureComponent<Props> {
       <tr>
         <th css={FolderTH} colSpan={2}>
           <Link to={path}>
-            <IconFolder /> {name}{" "}
-            {loading && <CircularProgress size={16} thickness={4} />}
+            {navigating => (
+              <>
+                <IconFolder />
+                {name}
+                {navigating && <CircularProgress size={16} thickness={4} />}
+              </>
+            )}
           </Link>
         </th>
       </tr>
